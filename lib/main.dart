@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import './widgets/chart.dart';
 import './widgets/new_transaction.dart';
 import '../widgets/transactions_list.dart';
@@ -11,6 +10,7 @@ void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   // SystemChrome.setPreferredOrientations(
   //     [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
+  // For setting available Orientations of the Device
   runApp(MyHome());
 }
 
@@ -21,9 +21,9 @@ class MyHome extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Personal Expenses App",
       theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.amber,
-          fontFamily: "Quicksand",
+          primarySwatch: Colors.purple, // So that you can set variants
+          accentColor: Colors.amber, // For Buttons..
+          fontFamily: "Quicksand", // Added from pubspec.yaml
           textTheme: ThemeData.light().textTheme.copyWith(
               title: TextStyle(
                   fontFamily: "OpenSans",
@@ -47,10 +47,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> transactions = [
-    // Transaction(id: "vd", amount: 69.99, date: DateTime.now(), title: "Sad"),
-    // Transaction(id: "vd", amount: 90.99, date: DateTime.now(), title: "Life")
-  ];
+  final List<Transaction> transactions = [];
 
   void _addNewTransaction(String txTitle, double txAmount, DateTime dateTime) {
     final newTx = Transaction(
